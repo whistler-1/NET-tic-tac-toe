@@ -5,5 +5,6 @@ public enum GameState
     NewGame, //While in a new game, wait for user to begin transition to midgame
     XTurn,   
     OTurn,
-    GameOver
+    GameOver,
+    GameClose
 }

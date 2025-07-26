@@ -26,11 +26,29 @@ public class ConsolePainter
         }
     }
     
-    
-    
-    public static void DrawGrid(string[,] board)
+    public static void DrawGrid(string[] b, int originLeft = 0, int originTop = 0)
     {
+        //Hacky, but it works. Will replace with a proper loop later.
+        Console.SetCursorPosition(originLeft, originTop);
+        Console.Write($" {b[0]} | {b[1]} | {b[2]} ");
         
+        Console.SetCursorPosition(originLeft, originTop+1);
+        Console.Write("═══════════");
+        
+        Console.SetCursorPosition(originLeft, originTop+2);
+        Console.Write($" {b[3]} | {b[4]} | {b[5]} ");
+        
+        Console.SetCursorPosition(originLeft, originTop+3);
+        Console.Write("═══════════");
+        
+        Console.SetCursorPosition(originLeft, originTop+4);
+        Console.Write($" {b[6]} | {b[7]} | {b[8]} ");
+        
+        //   X | O | X 
+        //  ═══════════
+        //   O | X | O 
+        //  ═══════════
+        //   X | O | X 
     }
     
     public static void DrawBox( int width, int height, int originLeft = 0, int originTop = 0)
