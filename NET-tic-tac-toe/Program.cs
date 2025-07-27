@@ -39,7 +39,7 @@ void Initialize()
                 NewGameScreen();
                 break;
             case GameState.XTurn:
-            //case GameState.OTurn:
+            case GameState.OTurn:
                 PlayScreen();
                 break;
         }
@@ -71,9 +71,25 @@ void PlayScreen()
     Console.SetCursorPosition(5, 10);
     Console.Write("Enter a number to place your piece.");
     
-    if (Console.ReadLine() is not null)
+    Console.SetCursorPosition(5, 11);
+    
+    var input = Console.ReadLine();
+    if (input is null) return;
+    
+    if (int.TryParse(input, out var number) && number is >= 0 and <= 8 )
     {
-        state = GameState.OTurn;
+        board[number] = currentPlayer;
+
+        state = state switch
+        {
+            GameState.XTurn => GameState.OTurn,
+            GameState.OTurn => GameState.XTurn,
+            _ => state
+        };
+    }
+    else
+    {
+        Console.Write("Could not read input. Try again.");
     }
 }
 
